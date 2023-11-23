@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import {FormsModule} from "@angular/forms";
 
 export interface ApiResponse {
@@ -22,13 +20,14 @@ export interface ApiResponse {
 export class RequestBoxComponent {
   userInput: string = '';
   responseText: string = '';
+  model:string = 'mistral';
 
   constructor() {}
 
   sendRequest(): void {
     this.responseText = '';
     const requestBody = {
-      model: 'mistral',
+      model: this.model,
       prompt: this.userInput
     };
 

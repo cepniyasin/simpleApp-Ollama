@@ -5,7 +5,14 @@
   align-items: center;
   margin: 20px;
 }
-
+/* Styling for the title */
+.title {
+  color: #007bff;
+  font-family: 'Quicksand', sans-serif; /* Apply Quicksand font */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center; /* Center align the title */
+}
 /* Styling for the input box */
 .input-box {
   width: 80%;
@@ -34,12 +41,11 @@
 
 /* Styling for the output box (read-only text area) */
 .output-box {
-  width: 80%;
+  width: 70%;
   height: 150px;
   padding: 10px;
   border: 2px solid #28a745;
   border-radius: 4px;
-  background-color: #f8f9fa;
   font-size: 16px;
   color: #212529;
   overflow-y: auto;

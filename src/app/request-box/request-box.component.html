@@ -1,7 +1,9 @@
 <div class="container">
+  <h1 class="title">OLLAMA: {{model.toUpperCase()}}</h1>
+
   <input type="text" class="input-box" [(ngModel)]="userInput"  (keyup.enter)="sendRequest()" placeholder="Ask me anything :)">
   <button class="send-button" (click)="sendRequest()">Send</button>
-  <div>
     <textarea class="output-box" readonly>{{ responseText }}</textarea>
-  </div>
 </div>
+<!--What is the tallest mountain in the world?-->
+<!--why isnt mvn buttom showing up on my spring boot project-->

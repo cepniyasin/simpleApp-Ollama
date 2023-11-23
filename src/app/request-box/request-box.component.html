@@ -1,7 +1,7 @@
-<div>
-  <input type="text" [(ngModel)]="userInput">
-  <button (click)="sendRequest()">Send</button>
+<div class="container">
+  <input type="text" class="input-box" [(ngModel)]="userInput"  (keyup.enter)="sendRequest()" placeholder="Ask me anything :)">
+  <button class="send-button" (click)="sendRequest()">Send</button>
   <div>
-    <textarea readonly>{{ responseText }}</textarea>
+    <textarea class="output-box" readonly>{{ responseText }}</textarea>
   </div>
 </div>

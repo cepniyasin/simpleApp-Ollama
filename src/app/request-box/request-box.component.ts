@@ -20,7 +20,7 @@ export interface ApiResponse {
 export class RequestBoxComponent {
   userInput: string = '';
   responseText: string = '';
-  model:string = 'mistral';
+  model:string = 'llama2-uncensored';
 
   constructor() {}
 

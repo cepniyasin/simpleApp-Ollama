@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {NgForOf} from "@angular/common";
 
 export interface ApiResponse {
   model: string;
@@ -8,21 +10,45 @@ export interface ApiResponse {
   done: boolean;
 }
 
+interface ModelInfo {
+  name: string;
+}
+
+interface ApiTagsResponse {
+  models: ModelInfo[];
+}
+
 @Component({
   selector: 'app-request-box',
   templateUrl: './request-box.component.html',
   styleUrls: ['./request-box.component.css'],
   imports: [
-    FormsModule
+    FormsModule,
+    NgForOf
   ],
   standalone: true
 })
-export class RequestBoxComponent {
+export class RequestBoxComponent  implements OnInit{
   userInput: string = '';
   responseText: string = '';
-  model:string = 'llama2-uncensored';
+  model:string = 'deepseek-coder';
+  models: string[] = [];
 
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
+
+  ngOnInit() {
+    this.fetchModels();
+  }
+
+  fetchModels() {
+    this.http.get<ApiTagsResponse>('http://localhost:11434/api/tags').subscribe(response => {
+      this.models = response.models.map(model => this.takeawayLatest(model.name)).sort();
+    }, error => {
+      console.error('Error fetching models:', error);
+    });
+  }
 
   sendRequest(): void {
     this.responseText = '';
@@ -74,5 +100,11 @@ export class RequestBoxComponent {
         break;
       }
     }
+  }
+
+  private takeawayLatest(modelName: string) {
+    const [name, version] = modelName.split(":");
+
+    return version == "latest" ? name: modelName;
   }
 }

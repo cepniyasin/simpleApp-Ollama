@@ -1,9 +1,11 @@
 <div class="container">
-  <h1 class="title">OLLAMA: {{model.toUpperCase()}}</h1>
-
+  <div class="dropdown-container">
+    <select class="dropdown-menu" [(ngModel)]="model">
+      <option *ngFor="let modelName of models" [value]="modelName">{{modelName}}</option>
+    </select>
+  </div>
+  <h1 class="title">{{model.toUpperCase()}}</h1>
   <input type="text" class="input-box" [(ngModel)]="userInput"  (keyup.enter)="sendRequest()" placeholder="Ask me anything :)">
   <button class="send-button" (click)="sendRequest()">Send</button>
     <textarea class="output-box" readonly>{{ responseText }}</textarea>
 </div>
-<!--What is the tallest mountain in the world?-->
-<!--why isnt mvn buttom showing up on my spring boot project-->

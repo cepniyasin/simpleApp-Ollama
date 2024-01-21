@@ -1,3 +1,7 @@
+:root {
+  --disabled-background-color: #e9ecef;
+}
+
 /* Container for the entire component */
 .container {
   display: flex;
@@ -54,7 +58,7 @@
 
 /* Additional styling for read-only state */
 .output-box[readonly] {
-  background-color: #e9ecef;
+  background-color: var(--disabled-background-color);
   opacity: 1;
 }
 
@@ -82,11 +86,11 @@
 
 /* Styling for the dropdown menu options */
 .dropdown-menu option {
-  background-color: white; /* Background color */
+  background-color: #e7e7e7;
   color: #007bff; /* Text color */
   padding: 10px; /* Padding for each option */
 }
 
 .dropdown-menu option:hover, .dropdown-menu option:focus {
-  background-color: #e9ecef;
+  background-color: var(--disabled-background-color);
 }
